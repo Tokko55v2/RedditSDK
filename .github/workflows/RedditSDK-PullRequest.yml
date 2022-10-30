@@ -1,4 +1,4 @@
-name: RedditSDK
+name: RedditSDK Lint and Build
 
 on:
   pull_request:

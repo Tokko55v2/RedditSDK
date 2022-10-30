@@ -1,0 +1,17 @@
+name: RedditSDK build DocC
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  buildAndCreateDocC:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v2
+      - name: make script executable
+        run: chmod +x ./scripts/createDocC.sh
+      - name: build and create
+        run: ./scripts/createDocC.sh
+
