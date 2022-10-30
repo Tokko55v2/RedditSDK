@@ -4,25 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "YARC_SDK",
+    name: "RedditSDK",
+    platforms: [
+        .iOS("16"), .macOS("12")
+    ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "YARC_SDK",
-            targets: ["YARC_SDK"]),
+        .library(name: "RedditSDK", targets: ["RedditSDK"])
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/openid/AppAuth-iOS.git", from: "1.6.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "YARC_SDK",
-            dependencies: []),
-        .testTarget(
-            name: "YARC_SDKTests",
-            dependencies: ["YARC_SDK"]),
+            name: "RedditSDK",
+            dependencies: [.product(name: "AppAuth", package: "AppAuth-iOS")],
+            path: "Sources",
+            exclude: ["Info.plist"]
+        ),
+        .testTarget(name: "RedditSDKTests", dependencies: ["RedditSDK"], path: "Tests")
     ]
 )
