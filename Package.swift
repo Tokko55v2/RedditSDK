@@ -21,6 +21,10 @@ let package = Package(
             path: "Sources",
             exclude: ["Info.plist"]
         ),
-        .testTarget(name: "RedditSDKTests", dependencies: ["RedditSDK"], path: "Tests")
+        .testTarget(
+            name: "RedditSDKTests",
+            dependencies: ["RedditSDK", .product(name: "AppAuth", package: "AppAuth-iOS")],
+            path: "Tests"
+        )
     ]
 )
