@@ -2,22 +2,24 @@ name: RedditSDK
 
 on:
   pull_request:
-    branches: '*'
+    branches:
+      - '*'
+  push:
+    branches:
+      - '*'
 
 jobs:
   lint:
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v2
-        name: lint
-        shell: bash
+      - name: lint RedditSDK
         run: ./scripts/swiftlint.sh
 
   build:
+    needs: lint
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v2
-        name: lint
-        shell: bash
+      - name: build RedditSDK
         run: xcodebuild -scheme RedditSDK -destination 'platform=OS X,arch=x86_64'
-
