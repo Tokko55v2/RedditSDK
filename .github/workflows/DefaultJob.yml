@@ -18,7 +18,7 @@ jobs:
             chmod +x ./scripts/swiftlint.sh
             chmod +x ./initProject.sh
       - name: init Project
-        rund: ./initProject.sh
+        run: ./initProject.sh
       - name: lint RedditSDK
         run: ./scripts/swiftlint.sh
 
