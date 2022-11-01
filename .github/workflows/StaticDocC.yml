@@ -32,8 +32,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - name: make script executable
-        run: chmod +x ./scripts/createDocC.sh
+      - name: make scripts executable
+        run: |
+            chmod +x ./scripts/createDocC.sh
+            chmod +x ./initProject.sh
+      - name: init Project
+        run: ./initProject.sh
       - name: build and create
         run: ./scripts/createDocC.sh
       - name: Upload artifact

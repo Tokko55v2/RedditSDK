@@ -2,8 +2,6 @@
 
 mkdir ./DocC
 
-sh initProject.sh 
-
 xcodebuild docbuild \
 -scheme RedditSDK \
 -destination 'platform=OS X,arch=x86_64' \

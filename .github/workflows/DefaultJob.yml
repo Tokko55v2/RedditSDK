@@ -13,8 +13,12 @@ jobs:
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v2
-      - name: make script executable
-        run: chmod +x ./scripts/swiftlint.sh
+      - name: make scripts executable
+        run: |
+            chmod +x ./scripts/swiftlint.sh
+            chmod +x ./initProject.sh
+      - name: init Project
+        rund: ./initProject.sh
       - name: lint RedditSDK
         run: ./scripts/swiftlint.sh
 
