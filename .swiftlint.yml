@@ -11,6 +11,12 @@ opt_in_rules: # some rules are turned off by default, so you need to opt-in
 #   - empty_parameters
 #   - vertical_whitespace
 
+included: # paths to include during linting. `--path` is ignored if present.
+  - Sources
+  
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - AppAuth
+
 analyzer_rules: # Rules run by `swiftlint analyze`
   - explicit_self
 
