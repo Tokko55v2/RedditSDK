@@ -33,8 +33,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: add Mint to PATH
-        run: |
-            export MINT_PATH .mint/Mint
       - name: make scripts executable
         run: |
             chmod +x ./scripts/createDocC.sh
