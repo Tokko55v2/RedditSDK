@@ -9,7 +9,7 @@ fi
 
 if [[ ! -z "$CI" ]]; then
     echo "running on CI"
-    export MINT_PATH="/Users/runner/.mint/bin"
+    export MINT_PATH="/Users/runner/.mint/Mint"
 fi
 
 swift run --package-path $MINT_PATH mint bootstrap
