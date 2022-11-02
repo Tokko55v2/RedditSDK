@@ -1,5 +1,7 @@
 #!bin/bash
 dir=$(pwd)
+echo $dir
+
 export MINT_PATH="$dir/.mint/Mint"
 
 if [ ! -d ".mint/Mint" ]; then
@@ -9,6 +11,7 @@ fi
 
 if [[ ! -z "$CI" ]]; then
     echo "running on CI"
+    export PATH="$PATH:/Users/runner/.mint/bin"
     export MINT_PATH="/Users/runner/.mint/Mint"
 fi
 
