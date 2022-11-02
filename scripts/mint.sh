@@ -1,6 +1,5 @@
 #!bin/bash
 dir=$(pwd)
-echo $dir
 export MINT_PATH="$dir/.mint/Mint"
 
 if [ ! -d "$MINT_PATH" ]; then
@@ -13,4 +12,4 @@ if [[ ! -z "$CI" ]]; then
   export PATH="$PATH:/Users/runner/.mint/bin"
 fi
 
-#swift run --package-path $MINT_PATH mint bootstrap
+swift run --package-path $MINT_PATH mint bootstrap
