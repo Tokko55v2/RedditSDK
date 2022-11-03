@@ -1,22 +1,22 @@
 #!/bin/bash
-
-mkdir ./DocC
+dir=$(pwd)
+mkdir "$dir/DocC"
 
 xcodebuild docbuild \
 -scheme RedditSDK \
 -destination 'platform=OS X,arch=x86_64' \
--derivedDataPath DocC
+-derivedDataPath "$dir/DocC"
 
-pathToDoc=$(find DocC -type d -name '*.doccarchive')
+pathToDoc=$(find "$dir/DocC" -type d -name '*.doccarchive')
 echo $pathToDoc
 
-mkdir ./.public
+mkdir "$dir/.public"
 
 $(xcrun --find docc) process-archive \
 transform-for-static-hosting $pathToDoc \
---output-path ./.public \
+--output-path "$dir/.public" \
 --hosting-base-path RedditSDK
 
-rm -rf ./DocC
+rm -rf "$dir/DocC"
 
 

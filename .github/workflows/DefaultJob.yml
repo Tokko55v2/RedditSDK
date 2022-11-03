@@ -17,9 +17,9 @@ jobs:
         run: |
             chmod +x ./scripts/swiftlint.sh
             chmod +x ./initProject.sh
-      - name: init Project
+      - name: Build Project
         run: ./initProject.sh
-      - name: lint RedditSDK
+      - name: Lint RedditSDK
         run: ./scripts/swiftlint.sh
 
   build:
@@ -27,5 +27,5 @@ jobs:
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v2
-      - name: build RedditSDK
+      - name: Build RedditSDK
         run: xcodebuild -scheme RedditSDK -destination 'platform=OS X,arch=x86_64'

@@ -4,6 +4,6 @@ build
 .build
 *.xcodeproj
 xcuserdata/
-.swiftpm
+.swiftpm/
 .public/
 .mint
