@@ -5,7 +5,7 @@ internal extension Publisher where Output == URLSession.DataTaskPublisher.Output
     func data() -> Publishers.TryMap<Self, Data> {
         tryMap { data, response in
             if let httpResponse = response as? HTTPURLResponse {
-                try httpResponse.evaluadeResponse()
+                try httpResponse.evaluateResponse()
             }
             return data
         }

@@ -3,11 +3,11 @@ import Combine
 import Foundation
 
 internal struct LoginService {
-    private let configuration: ReddiConfiguration
+    private let configuration: RedditConfiguration
     private let serviceConfiguration: OIDServiceConfiguration
     private let request: OIDAuthorizationRequest
 
-    init(configuration: ReddiConfiguration) {
+    init(configuration: RedditConfiguration) {
         self.configuration = configuration
 
         serviceConfiguration = OIDServiceConfiguration(

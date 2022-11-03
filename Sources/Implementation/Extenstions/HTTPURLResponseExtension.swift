@@ -2,7 +2,7 @@ import Foundation
 
 internal extension HTTPURLResponse {
     // swiftlint:disable cyclomatic_complexity
-    func evaluadeResponse() throws {
+    func evaluateResponse() throws {
         if statusCode == 400 {
             throw ApiError.badRequest
         }
@@ -40,7 +40,7 @@ internal extension HTTPURLResponse {
         }
 
         if statusCode == 503 {
-            throw ApiError.serviceUnvailable
+            throw ApiError.serviceUnavailable
         }
 
         if statusCode > 503 {

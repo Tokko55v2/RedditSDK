@@ -13,7 +13,7 @@ enum Endpoint {
 
     // MARK: Account
 
-    case accountBlockeUser
+    case accountBlockUser
 
     // MARK: Any Scope
 
@@ -31,7 +31,7 @@ enum Endpoint {
             return URL(string: "\(baseUrl)/api/v1/me/prefs")!
         case .identityMeTrophies:
             return URL(string: "\(baseUrl)/api/v1/me/trophies")!
-        case .accountBlockeUser:
+        case .accountBlockUser:
             return URL(string: "\(baseUrl)/api/block_user")!
         case .usernameAvailable:
             return URL(string: "\(baseUrl)/api/username_available")!

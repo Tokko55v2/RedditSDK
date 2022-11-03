@@ -2,11 +2,11 @@ import Combine
 import Foundation
 
 internal final class RedditModuleImpl: RedditModule {
-    private let configuration: ReddiConfiguration
+    private let configuration: RedditConfiguration
     private let loginService: LoginService
     private let requestServices: RequestServices
 
-    public init(configuration: ReddiConfiguration) {
+    public init(configuration: RedditConfiguration) {
         self.configuration = configuration
         loginService = LoginService(configuration: configuration)
         requestServices = RequestServices()
@@ -16,7 +16,7 @@ internal final class RedditModuleImpl: RedditModule {
         loginService.login()
     }
 
-    func handleLoginRespone(url: URL) -> AnyPublisher<Void, ApiError> {
+    func handleLoginResponse(url: URL) -> AnyPublisher<Void, ApiError> {
         loginService.handleLoginResponse(responseURL: url)
     }
 
@@ -24,7 +24,7 @@ internal final class RedditModuleImpl: RedditModule {
         requestServices.request(method: .get, endpoint: .identityMe, type: IdentityMe.self)
     }
 
-    func identityMePrefs() -> AnyPublisher<MePrefrence, ApiError> {
+    func identityMePreference() -> AnyPublisher<MePrefrence, ApiError> {
         requestServices.request(method: .get, endpoint: .identityMePrefs, type: MePrefrence.self)
     }
 
@@ -32,8 +32,8 @@ internal final class RedditModuleImpl: RedditModule {
         requestServices.request(method: .get, endpoint: .identityMeTrophies, type: IdentityMe.self)
     }
 
-    func accountBlockeUser() -> AnyPublisher<IdentityMe, ApiError> {
-        requestServices.request(method: .get, endpoint: .accountBlockeUser, type: IdentityMe.self)
+    func accountBlockUser() -> AnyPublisher<IdentityMe, ApiError> {
+        requestServices.request(method: .get, endpoint: .accountBlockUser, type: IdentityMe.self)
     }
 
     func usernameAvailable(username: String) -> AnyPublisher<Bool, ApiError> {

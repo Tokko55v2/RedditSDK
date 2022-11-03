@@ -1,4 +1,6 @@
 #!/bin/bash
+removeDoC="${1:-true}"
+
 dir=$(pwd)
 mkdir "$dir/DocC"
 
@@ -17,6 +19,8 @@ transform-for-static-hosting $pathToDoc \
 --output-path "$dir/.public" \
 --hosting-base-path RedditSDK
 
-rm -rf "$dir/DocC"
+if $removeDoC ; then
+    rm -rf "$dir/DocC"
+fi
 
 

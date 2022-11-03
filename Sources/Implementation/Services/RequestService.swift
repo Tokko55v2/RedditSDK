@@ -83,8 +83,8 @@ internal struct RequestServices {
 
                 return URLSession.DataTaskPublisher(request: request, session: .shared)
                     .tryMap { data, response in
-                        if let httpResonse = response as? HTTPURLResponse {
-                            try httpResonse.evaluadeResponse()
+                        if let httpResponse = response as? HTTPURLResponse {
+                            try httpResponse.evaluateResponse()
                         }
 
                         let model = try? JSONDecoder().decode([OptionalObject<LinkFlair2>].self, from: data)

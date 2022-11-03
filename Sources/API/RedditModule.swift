@@ -1,41 +1,51 @@
 import Combine
 import SwiftUI
 
+/// Provides the integrator with the needed APIs.
 public protocol RedditModule {
     /// Returns an `URL` that takes the client to the Login site for the OAuth2 authentication.
-    /// When this is done user get's redirected.
-    /// To finish the login process successful call ``handleLoginRespone(url:)`` and pass on the response URI
+    /// If successful Reddit returns a redirect URI.
+    /// Register this response URI and pass it on to ``handleLoginResponse(url:)``
     ///
-    /// - Returns: a `URL` to the OAuth2 Login
+    /// - Returns: a `URL` to the OAuth2 Login. It is recommended to open the URL with a `SFViewController`.
     func login() -> AnyPublisher<URL, ApiError>
 
-    /// After a successful login and allowing the App to act on a user behavoire
-    func handleLoginRespone(url: URL) -> AnyPublisher<Void, ApiError>
+    /// Pass the response URL along to ``...``
+    ///
+    /// - Parameter url: Response url from the OAuth2.
+    /// - Returns: AnyPublisher<Void, ApiError>
+    func handleLoginResponse(url: URL) -> AnyPublisher<Void, ApiError>
 
     // MARK: Identity
 
-    /// `/api/v1/me`
-    /// Returns the identity of the user.
+    /// The identity of the user.
     ///
-    /// - Returns: AnyPublisher<Me, ApiError>
+    /// - HTTP:  GET **/api/v1/me**
+    /// - OAuth2 Scope: `identity`
+    /// - Returns: AnyPublisher<IdentityMe, ApiError>
     func identityMe() -> AnyPublisher<IdentityMe, ApiError>
 
-    /// `/api/v1/me/prefs`
-    /// Return the preference settings of the logged in user
+    /// The preference settings of the logged in user
     ///
-    /// - Returns: AnyPublisher<MePrefrence, ApiError>
-    func identityMePrefs() -> AnyPublisher<MePrefrence, ApiError>
+    /// - HTTP: GET **/api/v1/me/prefs**
+    /// - OAuth2 Scope: `identity`
+    ///
+    /// - Returns: AnyPublisher<MePreference, ApiError>
+    func identityMePreference() -> AnyPublisher<MePrefrence, ApiError>
 
-    /// `/api/v1/me/trophies`
-    /// Return a list of trophies for the current user.
+    /// A list of trophies for the current user.
     ///
+    /// - HTTP: GET  **/api/v1/me/trophies**
+    /// - OAuth2 Scope: `identity`
     /// - Returns: AnyPublisher<Me, ApiError>
     func identityMeTrophies() -> AnyPublisher<IdentityMe, ApiError>
 
     // MARK: Any Scope
 
-    /// `/api/username_available`
     /// Check whether a username is available for registration.
+    ///
+    /// - HTTP:  GET **/api/username_available**
+    /// - OAuth2 Scope: `any`
     ///
     /// - Parameters: username `String`
     /// - Returns: AnyPublisher<Bool, ApiError>
@@ -43,10 +53,12 @@ public protocol RedditModule {
 
     // MARK: Manage My Flair
 
-    /// Return list of available link flair for the current subreddit.
+    /// List of available link flair for the current subreddit.
     /// Will not return flair if the user cannot set their own link flair and
     /// they are not a moderator that can set flair.
     ///
+    /// - HTTP: GET **[/r/subreddit]/api/link_flair_v2**
+    /// - OAuth2 Scope: `flair`
     /// - Parameters: subreddit `String`
     /// - Returns: AnyPublisher<LinkFlair, ApiError>
     func linkFlair(subreddit: String) -> AnyPublisher<[LinkFlair2], ApiError>

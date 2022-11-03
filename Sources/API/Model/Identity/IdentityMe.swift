@@ -1,5 +1,6 @@
 import Foundation
 
+/// Holds the identity features from the current user.
 public struct IdentityMe: Codable {
     public let features: Feature?
 
