@@ -28,8 +28,8 @@ internal final class RedditModuleImpl: RedditModule {
         requestServices.request(method: .get, endpoint: .identityMePrefs, type: MePrefrence.self)
     }
 
-    func identityMeTrophies() -> AnyPublisher<IdentityMe, ApiError> {
-        requestServices.request(method: .get, endpoint: .identityMeTrophies, type: IdentityMe.self)
+    func identityMeTrophies() -> AnyPublisher<Void, ApiError> {
+        Fail(error: ApiError.notImplemented).eraseToAnyPublisher()
     }
 
     func accountBlockUser() -> AnyPublisher<IdentityMe, ApiError> {

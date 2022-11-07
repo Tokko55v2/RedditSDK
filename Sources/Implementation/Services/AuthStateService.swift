@@ -14,7 +14,6 @@ internal enum AuthStateService {
                         promise(.failure(error.mapOIDErrorToRedditError))
                     }
 
-                    let access = accessToken
                     if let accessToken = accessToken {
                         promise(.success(accessToken))
                     }
