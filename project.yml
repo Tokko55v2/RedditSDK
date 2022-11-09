@@ -30,6 +30,7 @@ targets:
     scheme:
       testTargets:
         - RedditSDKTests
+        - RedditTestHost
     settings:
       base:
         BUILD_LIBRARY_FOR_DISTRIBUTION: YES
@@ -48,6 +49,13 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "16.0"
+    scheme:
+      testTargets:
+        - RedditTestHost
+      environmentVariables:
+        CLIENT_ID: ${CLIENT_ID}
+        USERNAME: ${USERNAME}
+        PASSWORD: ${PASSWORD}
     sources: TestHost
     dependencies:
       - package: AppAuth

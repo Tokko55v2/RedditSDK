@@ -22,6 +22,7 @@ final class redditSDKLoginTests: XCTestCase {
     }
 
     func testLogin() throws {
-        
+        let identity = try awaitPublisher(module.identityMe())
+        XCTAssertTrue(identity.features?.chatSubreddit ?? false)
     }
 }

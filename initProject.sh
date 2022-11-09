@@ -1,8 +1,10 @@
 #!/bin/bash
 
 teamid=${teamid:-none}
-bundleid=${bundleid:-none}
-bundleidhost=${bundleidhost:-none}
+
+username=${username:-none}
+password=${password:-none}
+clientId=${clientId:-none}
 
 while [ $# -gt 0 ]; do
    if [[ $1 == *"--"* ]]; then
@@ -12,15 +14,9 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-echo "teamid: ${teamid} - bundleid: ${bundleid} - bundleidhost: ${bundleidhost}"
+source ./scripts/projectConfigs.sh --teamid ${teamid} --username ${username} --password ${password} --clientId ${clientId}
 
-export BUNDLE_ID=${bundleid}
-export BUNDLE_ID_TESTHOST=${bundleidhost}
-export SDK_NAME="RedditSDK"
-export TEAM_ID=${teamid}
-export CI_PIPELINE_ID="1"
-export SDK_VERSION="0.1"
-export NS_HUMAM_READABLE="RedditSDK"
+echo "teamid: ${teamid} - bundleid: ${bundleid} - bundleidhost: ${bundleidhost} - clientId: ${clientId} - username: ${username}"
 
 sh scripts/mint.sh
 

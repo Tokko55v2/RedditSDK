@@ -17,11 +17,9 @@ class RedditTestConfig {
             fatalError("no client id found")
         }
         
-        print("\(clientId)")
-        
         module = RedditModuleBuilder(
             configuration: RedditConfiguration(
-                clientId: "clientId",
+                clientId: clientId,
                 scopes: { ["identity", "flair"] }
             )
         ).build()
