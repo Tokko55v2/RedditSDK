@@ -37,7 +37,7 @@ class ContentViewModel: ObservableObject {
         module = RedditModuleBuilder(
             configuration: RedditConfiguration(
                 clientId: clientId,
-                scopes: { ["identity"] }
+                scopes: { ["identity", "flair"] }
             )
         ).build()
         
@@ -52,7 +52,7 @@ class ContentViewModel: ObservableObject {
     func response(url: URL) {
         module.handleLoginResponse(url: url)
             .sink(receiveCompletion: { _ in
-                
+                exit(0)
             }, receiveValue: { _ in })
             .store(in: &store)
     }

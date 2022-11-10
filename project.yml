@@ -66,6 +66,13 @@ targets:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: "16.0"
+    scheme:
+      testTargets:
+        - RedditSDKTests
+      environmentVariables:
+        CLIENT_ID: ${CLIENT_ID}
+        USERNAME: ${USERNAME}
+        PASSWORD: ${PASSWORD}
     sources: Tests
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_ID_TESTHOST}

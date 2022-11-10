@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ApiError: Error, LocalizedError {
+public enum ApiError: Equatable, Error, LocalizedError {
     /// A generic error occurred and contains an error description.
     case generic(String?)
     /// Occurs when an access token could not be determined.
