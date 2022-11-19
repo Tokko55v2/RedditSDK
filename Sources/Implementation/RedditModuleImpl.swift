@@ -38,7 +38,9 @@ internal final class RedditModuleImpl: RedditModule {
 
     func usernameAvailable(username: String) -> AnyPublisher<Bool, ApiError> {
         requestServices.request(
-            queryItems: [URLQueryItem(name: "user", value: username)],
+            queryItems: [
+                URLQueryItem(name: Constants.unsernameQueryKey, value: username)
+            ],
             method: .get,
             endpoint: .usernameAvailable,
             type: Bool.self

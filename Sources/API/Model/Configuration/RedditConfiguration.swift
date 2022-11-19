@@ -17,7 +17,7 @@ public struct RedditConfiguration {
     ///   - additionalParameters: add additional parameters to the login, such as `duration`.
     ///   `duration` is by default `permanent`.
     ///   - scopes: is a description of reddit's OAuth2 scopes. Scopes need to be set for certain calls.
-    ///   For example you need a `identity` scope to access ``RedditModule/identityMe()``
+    ///   For example you need an `identity` scope to access ``RedditModule/identityMe()``
     public init(
         clientId: String,
         redirectUri: String = "genericSDK://response",

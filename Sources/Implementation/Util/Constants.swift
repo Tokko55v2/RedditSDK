@@ -14,4 +14,6 @@ struct Constants {
         }
         return url
     }
+
+    static let unsernameQueryKey: String = "user"
 }
